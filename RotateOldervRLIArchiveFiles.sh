@@ -1,5 +1,22 @@
 #!/bin/bash
 
+# Script Name: RotateOldervRLIArchiveFiles.sh
+# Author: Mehmet Hakan Can - Staff Technical Account Manager - VMware
+# Date: 25-04-2023
+# Description:
+# It defines variables for the paths to the local mount point, the log file, and the remote host and directory.
+# It has a function called log_message that enables users to record messages and view them on the console.
+# If the remote directory is not already mounted on the local mount point, the function mount_remote_directory is #defined to mount it.
+# It defines the function delete_old_files to remove files from the local mount point that are older than a specified rotation interval. It analyzes the size of files before and after deletion and keeps track of how much space is saved and   how many files were eliminated.
+# To unmount the remote directory from the local mount point, it defines the function unmount_remote_directory.
+# To handle errors and end the script with an error, it defines the method handle_error.
+# It traps errors using the trap command and calls the handle_error function.
+# It calls the mount_remote_directory function to mount the remote directory.
+# It calls the delete_old_files function to delete old files from the local directory.
+# It calls the unmount_remote_directory function to unmount the remote directory.
+# Note: This script assumes that the necessary permissions and dependencies are in place for mounting and unmounting the remote directory. It also assumes that the remote directory is an NFS share and can be mounted using the specified remote host and directory path. Please make sure to test the script in a safe environment before using it in a production environment.
+
+
 # Set the Rotation Period 
 rotation_period="$1"
 
